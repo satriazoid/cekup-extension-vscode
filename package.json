@@ -1,0 +1,71 @@
+{
+  "name": "cekup",
+  "displayName": "Cekup",
+  "description": "Lightweight CPU, RAM, and disk monitor in the Activity Bar.",
+  "version": "0.1.0",
+  "publisher": "satriazoid",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/satriazoid/cekup-extension-vscode.git"
+  },
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "cpu",
+    "ram",
+    "memory",
+    "disk",
+    "system monitor"
+  ],
+  "main": "./dist/extension.js",
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "contributes": {
+    "views": {
+      "explorer": [
+        {
+          "id": "cekup.stats",
+          "name": "Cekup"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Cekup",
+      "properties": {
+        "cekup.refreshInterval": {
+          "type": "number",
+          "default": 2000,
+          "minimum": 500,
+          "maximum": 60000,
+          "description": "Milliseconds between metric refreshes."
+        },
+        "cekup.diskPath": {
+          "type": "string",
+          "default": "",
+          "description": "Path to monitor for disk space. Defaults to the primary drive."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "build": "node esbuild.mjs",
+    "watch": "node esbuild.mjs --watch",
+    "typecheck": "tsc --noEmit",
+    "benchmark": "tsc && node scripts/benchmark.mjs",
+    "package": "npm run typecheck && node esbuild.mjs --production && vsce package"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@types/node": "^20.11.30",
+    "@types/vscode": "^1.85.0",
+    "@vscode/vsce": "^2.24.0",
+    "esbuild": "^0.20.2",
+    "typescript": "^5.4.5"
+  }
+}
