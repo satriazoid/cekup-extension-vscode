@@ -31,7 +31,8 @@
       "explorer": [
         {
           "id": "cekup.stats",
-          "name": "Cekup"
+          "name": "Cekup",
+          "visibility": "collapsed"
         }
       ]
     },
